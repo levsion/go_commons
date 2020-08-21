@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net"
 	"os"
 	"os/signal"
@@ -262,7 +263,8 @@ func WaitForExitSign() {
 	c := make(chan os.Signal, 1)
 	//结束，收到ctrl+c 信号
 	signal.Notify(c, os.Interrupt, os.Kill, syscall.SIGTERM, syscall.SIGHUP)
-	<-c
+	s := <-c
+	log.Printf("Get the exit signal: [%s]", s)
 }
 
 func IsZero(v reflect.Value) bool {
