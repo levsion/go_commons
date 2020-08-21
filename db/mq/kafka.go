@@ -3,8 +3,8 @@ package mq
 import (
 	"sync"
 
-	"github.com/sundy-li/go_commons/conf"
-	"github.com/sundy-li/go_commons/libs/mq"
+	"github.com/levsion/go_commons/conf"
+	"github.com/levsion/go_commons/libs/mq"
 )
 
 var (

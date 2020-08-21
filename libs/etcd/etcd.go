@@ -7,7 +7,7 @@ import (
 
 	"github.com/coreos/etcd/clientv3"
 
-	"github.com/sundy-li/go_commons/conf"
+	"github.com/levsion/go_commons/conf"
 )
 
 type EtcdDb struct {
@@ -72,7 +72,7 @@ func (et *EtcdDb) GetPrefix(key string) (map[string]string, error) {
 		return nil, err
 	}
 	mp := make(map[string]string)
-	for _,kv := range resp.Kvs{
+	for _, kv := range resp.Kvs {
 		mp[string(kv.Key)] = string(kv.Value)
 	}
 	return mp, nil

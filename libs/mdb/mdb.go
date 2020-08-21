@@ -8,7 +8,7 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
-	"github.com/sundy-li/go_commons/conf"
+	"github.com/levsion/go_commons/conf"
 )
 
 type Field struct {

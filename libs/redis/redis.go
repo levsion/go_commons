@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/sundy-li/go_commons/conf"
+	"github.com/levsion/go_commons/conf"
 
 	"gopkg.in/redis.v5"
 )

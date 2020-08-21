@@ -9,7 +9,7 @@ import (
 
 	"github.com/rogpeppe/fastuuid"
 
-	"github.com/sundy-li/go_commons/utils"
+	"github.com/levsion/go_commons/utils"
 )
 
 const (

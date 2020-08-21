@@ -1,23 +1,23 @@
 package etcd
 
 import (
-	"testing"
-	"github.com/sundy-li/go_commons/conf"
 	"fmt"
-	"time"
+	"github.com/levsion/go_commons/conf"
 	"sync"
+	"testing"
+	"time"
 )
 
 var et *EtcdDb
 
-func init()  {
-	et,_ = NewEtcd(&conf.DbConfig{
-		Host:"s3:4010s3:4011,s3:4012",
+func init() {
+	et, _ = NewEtcd(&conf.DbConfig{
+		Host: "s3:4010s3:4011,s3:4012",
 	})
 }
 
 func TestEtcdDb_Put(t *testing.T) {
-	et.Put("test","aaa")
+	et.Put("test", "aaa")
 	fmt.Println(et.Get("test"))
 }
 
@@ -30,13 +30,13 @@ func TestEtcdDb_WatchPrefix(t *testing.T) {
 		}
 		wg.Done()
 	}()
-	et.PutTTL("aaa","ddd",time.Second*5)
-	et.PutTTL("aaag","ddd",time.Second*5)
+	et.PutTTL("aaa", "ddd", time.Second*5)
+	et.PutTTL("aaag", "ddd", time.Second*5)
 	wg.Wait()
 }
 
 func TestEtcdDb_PutTTL(t *testing.T) {
-	et.PutTTL("test","aaa",time.Second*2)
-	time.Sleep(time.Second*3)
+	et.PutTTL("test", "aaa", time.Second*2)
+	time.Sleep(time.Second * 3)
 	fmt.Println(et.Get("test"))
 }

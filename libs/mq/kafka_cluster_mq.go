@@ -7,8 +7,8 @@ import (
 	"github.com/Shopify/sarama"
 	"github.com/bsm/sarama-cluster"
 
-	"github.com/sundy-li/go_commons/conf"
-	"github.com/sundy-li/go_commons/log"
+	"github.com/levsion/go_commons/conf"
+	"github.com/levsion/go_commons/log"
 )
 
 type KafkaClusterMQ struct {
