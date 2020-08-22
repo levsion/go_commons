@@ -261,10 +261,28 @@ func SendExitSign() error {
 
 func WaitForExitSign() {
 	c := make(chan os.Signal, 1)
-	//结束，收到ctrl+c 信号
+	//监听系统信号
 	signal.Notify(c, os.Interrupt, os.Kill, syscall.SIGTERM, syscall.SIGHUP)
-	s := <-c
-	log.Printf("Get the exit signal: [%s]", s)
+	for {
+		s := <-c
+		switch s {
+		case syscall.SIGHUP:
+			log.Printf("Get the hangup signal: [%s]", s)
+		case os.Kill:
+			log.Printf("Get the kill signal: [%s]", s)
+			goto ENDFOR
+		case syscall.SIGTERM:
+			log.Printf("Get the terminate signal: [%s]", s)
+			goto ENDFOR
+		case os.Interrupt:
+			log.Printf("Get the interrupt signal: [%s]", s)
+			goto ENDFOR
+		default:
+			log.Printf("Get the unrecognized signal: [%s]", s)
+		}
+	}
+ENDFOR:
+	return
 }
 
 func IsZero(v reflect.Value) bool {
